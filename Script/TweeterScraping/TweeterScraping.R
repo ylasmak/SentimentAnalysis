@@ -19,22 +19,15 @@ setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
 some_tweets = searchTwitter('starbucks', n=10000, lang='en')
 
 
+
+write.csv(twListToDF(data), file="something.csv")
+
+
+
 # get the text
 some_txt = sapply(some_tweets, function(x) x$getText())
 
 
-# remove retweet entities
-some_txt = gsub('(RT|via)((?:\\b\\W*@\\w+)+)', '', some_txt)
-# remove at people
-some_txt = gsub('@\\w+', '', some_txt)
-# remove punctuation
-some_txt = gsub('[[:punct:]]', '', some_txt)
-# remove numbers
-some_txt = gsub('[[:digit:]]', '', some_txt)
-# remove html links
-some_txt = gsub('http\\w+', '', some_txt)
-# remove unnecessary spaces
-some_txt = gsub('[ \t]{2,}', '', some_txt)
-some_txt = gsub('^\\s+|\\s+$', '', some_txt)
 
 
+save(some_tweets ,file = './Data/tweet.txt')
