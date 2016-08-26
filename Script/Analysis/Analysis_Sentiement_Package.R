@@ -10,7 +10,7 @@ library("sentiment")
 
 
 
-
+setwd("C:/Users/ylasmak/Documents/GitHub/SentimentAnalysis")
 
 textdata <- df$text
 
@@ -19,6 +19,8 @@ textdata = gsub("[[:digit:]]", "", textdata)
 textdata = gsub("http\\w+", "", textdata)
 textdata = gsub("[ \t]{2,}", "", textdata)
 textdata = gsub("^\\s+|\\s+$", "", textdata)
+
+textdata = gsub("[\r\n]", "", textdata)
 
 try.error = function(x)
 {
@@ -79,3 +81,4 @@ comparison.cloud(tdm, colors = brewer.pal(nemo, "Dark2"),
                  title.size = 1.5)
 
 
+write.csv(sent_df, file = "./Data/nespresso.csv")

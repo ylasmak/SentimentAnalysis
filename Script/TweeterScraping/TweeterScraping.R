@@ -16,9 +16,7 @@ access_token_secret = 'HT4c5ZualavTzEF12QbT6oelws3c3dZ748h6wQfBFII6J'
 
 
 
-some_tweets = searchTwitter('nespresso', n=10000, lang='en')
-
-
+some_tweets = searchTwitter('samsung', n=10000, lang='en')
 
 df <- twListToDF(some_tweets)
 
