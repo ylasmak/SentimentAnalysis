@@ -9,6 +9,7 @@ library("SnowballC")
 library("sentiment")
 
 
+df <- read.csv(file = "./Data/Tweets.csv")
 
 setwd("C:/Users/ylasmak/Documents/GitHub/SentimentAnalysis")
 
@@ -43,7 +44,7 @@ class_pol = classify_polarity(textdata, algorithm="bayes")
 polarity = class_pol[,4]
 
 sent_df = data.frame(text=textdata, emotion=emotion,
-                     polarity=polarity, stringsAsFactors=FALSE)
+                     polarity=polarity,result = df$airline_sentiment, stringsAsFactors=FALSE)
 
 levels=names(sort(table(emotion), decreasing=TRUE))
 
@@ -81,4 +82,4 @@ comparison.cloud(tdm, colors = brewer.pal(nemo, "Dark2"),
                  title.size = 1.5)
 
 
-write.csv(sent_df, file = "./Data/nespresso.csv")
+write.csv(sent_df, file = "./Data/tweeter_Result.csv")
